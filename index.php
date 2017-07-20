@@ -51,7 +51,7 @@ if(isset($_POST["submit"])) {
 				</nav>
 			</header>
 		</section>
-		<div class="container">
+		<div class="container-fluid">
 
 			<h3 class="text-center">
 				Requested PO's</span>
