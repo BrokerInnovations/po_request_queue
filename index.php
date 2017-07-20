@@ -65,10 +65,15 @@ if(isset($_POST["submit"])) {
 						<th>Event Date</th>
 						<th>Vendor</th>
 						<th>Ticket Group Code </th>
+						<th>Cost of Inventory</th>
+						<th>On-Hand Date</th>
 						<th>Stock Type</th>
 						<th>Near Term Delivery Method </th>
 						<th>Internal PO Notes</th>
+						<th>External PO Notes</th>
+						<th>External PO #</th>
 						<th>Shipping Notes</th>
+						<th>Payment Method</th>
 					</tr>
 				</thead>
 			</table>

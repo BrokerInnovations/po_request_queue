@@ -27,10 +27,15 @@ $db->sql( "CREATE TABLE IF NOT EXISTS `requested_po` (
 	`event_date` date,
 	`vendor` varchar(255),
 	`ticket_group_code_` varchar(255),
+	`cost_of_inventory_` varchar(255),
+	`on-hand_date_` varchar(255),
 	`stock_type` varchar(255),
 	`near_term_delivery_method_` varchar(255),
 	`internal_po_notes` varchar(255),
+	`external_po_notes_` varchar(255),
+	`external_po__` varchar(255),
 	`shipping_notes` varchar(255),
+	`payment_method_` varchar(255),
 	PRIMARY KEY( `id` )
 );" );
 
@@ -45,10 +50,15 @@ Editor::inst( $db, 'requested_po', 'id' )
 			->setFormatter( 'Format::date_format_to_sql', 'Y-m-d' ),
 		Field::inst( 'vendor' ),
 		Field::inst( 'ticket_group_code_' ),
+		Field::inst( 'cost_of_inventory_' ),
+		Field::inst( 'on-hand_date_' ),
 		Field::inst( 'stock_type' ),
 		Field::inst( 'near_term_delivery_method_' ),
 		Field::inst( 'internal_po_notes' ),
-		Field::inst( 'shipping_notes' )
+		Field::inst( 'external_po_notes_' ),
+		Field::inst( 'external_po__' ),
+		Field::inst( 'shipping_notes' ),
+		Field::inst( 'payment_method_' )
 	)
 	->process( $_POST )
 	->json();

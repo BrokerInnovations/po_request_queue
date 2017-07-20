@@ -31,6 +31,14 @@ $(document).ready(function() {
 				"name": "ticket_group_code_"
 			},
 			{
+				"label": "Cost of Inventory :",
+				"name": "cost_of_inventory_"
+			},
+			{
+				"label": "On-Hand Date :",
+				"name": "on-hand_date_"
+			},
+			{
 				"label": "Stock Type:",
 				"name": "stock_type"
 			},
@@ -43,8 +51,20 @@ $(document).ready(function() {
 				"name": "internal_po_notes"
 			},
 			{
+				"label": "External PO Notes :",
+				"name": "external_po_notes_"
+			},
+			{
+				"label": "External PO # :",
+				"name": "external_po__"
+			},
+			{
 				"label": "Shipping Notes:",
 				"name": "shipping_notes"
+			},
+			{
+				"label": "Payment Method :",
+				"name": "payment_method_"
 			}
 		]
 	} );
@@ -70,6 +90,12 @@ $(document).ready(function() {
 				"data": "ticket_group_code_"
 			},
 			{
+				"data": "cost_of_inventory_"
+			},
+			{
+				"data": "on-hand_date_"
+			},
+			{
 				"data": "stock_type"
 			},
 			{
@@ -79,7 +105,16 @@ $(document).ready(function() {
 				"data": "internal_po_notes"
 			},
 			{
+				"data": "external_po_notes_"
+			},
+			{
+				"data": "external_po__"
+			},
+			{
 				"data": "shipping_notes"
+			},
+			{
+				"data": "payment_method_"
 			}
 		],
 		rowId: 'extn',
