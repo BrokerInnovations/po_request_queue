@@ -11,7 +11,16 @@ $(document).ready(function() {
 		ajax: 'php/table.requested_po.php',
 		table: '#requested_po',
 		fields: [
-
+			{
+				"label": "Date Requested:",
+				"name": "date_requested",
+				"type": "datetime",
+				"format": "YYYY-MM-DD"
+			},
+			{
+				"label": "Responsible User",
+				"name": "responsible_user"
+			},
 			{
 				"label": "Event:",
 				"name": "event"
@@ -23,8 +32,21 @@ $(document).ready(function() {
 				"format": "YYYY-MM-DD"
 			},
 			{
+        "label":     "Consignment PO:",
+        "name":      "consignment",
+        "type":      "checkbox",
+        "separator": "|",
+        "options":   [
+            { "label": '', "value": 1 }
+        ]
+      },
+			{
 				"label": "Vendor:",
 				"name": "vendor"
+			},
+			{
+				"label": "# of tickets:",
+				"name": "quantity"
 			},
 			{
 				"label": "Ticket Group Code :",
@@ -71,11 +93,21 @@ $(document).ready(function() {
 
 	var requestTable = $('#requested_po').DataTable( {
 		dom: 'Bfrtip',
+		scrollCollapse: true,
+		scrollX: true,
+		scrollY: "300px",
+		paging: false,
 		ajax: 'php/table.requested_po.php',
 		columns: [
 
 			{
 				"data": "id"
+			},
+			{
+				"data": "date_requested"
+			},
+			{
+				"data": "responsible_user"
 			},
 			{
 				"data": "event"
@@ -84,7 +116,20 @@ $(document).ready(function() {
 				"data": "event_date"
 			},
 			{
+        "data":   "consignment",
+        render: function ( data, type, row ) {
+            if ( type === 'display' ) {
+                return '<input type="checkbox" class="editor-active">';
+            }
+            return data;
+        },
+        "className": "dt-body-center"
+      },
+			{
 				"data": "vendor"
+			},
+			{
+				"data": "quantity"
 			},
 			{
 				"data": "ticket_group_code_"
@@ -126,8 +171,19 @@ $(document).ready(function() {
 			{ extend: "create", editor: requestEditor },
 			{ extend: "edit",   editor: requestEditor },
 			{ extend: "remove", editor: requestEditor }
-		]
+		],
+		rowCallback: function ( row, data ) {
+            // Set the checked state of the checkbox in the table
+            $('input.editor-active', row).prop( 'checked', data.consignment == 1 );
+        }
 	} );
+
+	$('#requested_po').on( 'change', 'input.editor-active', function () {
+        requestEditor
+            .edit( $(this).closest('tr'), false )
+            .set( 'consignment', $(this).prop( 'checked' ) ? 1 : 0 )
+            .submit();
+    } );
 
 	requestEditor.on( 'submitComplete', function (){
 		requestTable.ajax.reload(null,false);
@@ -154,8 +210,21 @@ $(document).ready(function() {
 				"name": "row"
 			},
 			{
-				"label": "Seat",
-				"name": "seat"
+        "label":     "Odd:",
+        "name":      "odd",
+        "type":      "checkbox",
+        "separator": "|",
+        "options":   [
+            { "label": '', "value": 1 }
+        ]
+      },
+			{
+				"label": "Lower Seat #",
+				"name": "seat_low"
+			},
+			{
+				"label": "Seat Qty",
+				"name": "seat_qty"
 			}
 		]
 	} );
@@ -179,13 +248,27 @@ $(document).ready(function() {
 				"name": "row"
 			},
 			{
-				"label": "Seat",
-				"name": "seat"
+        "label":     "Odd:",
+        "name":      "odd",
+        "type":      "checkbox",
+        "separator": "|",
+        "options":   [
+            { "label": '', "value": 1 }
+        ]
+      },
+			{
+				"label": "Lower Seat #",
+				"name": "seat_low"
+			},
+			{
+				"label": "Seat Qty",
+				"name": "seat_qty"
 			}
 		]
 	} );
 
 	sectionInsEditor.on( 'submitComplete', function (){
+		requestTable.ajax.reload(null,false);
 		sectionTable.ajax.reload(null,false);
 	});
 
@@ -223,7 +306,20 @@ $(document).ready(function() {
 				"data": "row"
 			},
 			{
-				"data": "seat"
+        "data":   "odd",
+        render: function ( data, type, row ) {
+            if ( type === 'display' ) {
+                return '<input type="checkbox" class="editor-active">';
+            }
+            return data;
+        },
+        "className": "dt-body-center"
+      },
+			{
+				"data": "seat_low"
+			},
+			{
+				"data": "seat_qty"
 			}
 		],
 		select: {
@@ -234,8 +330,20 @@ $(document).ready(function() {
 			{ extend: "create", editor: sectionInsEditor,enabled: false},
 			{ extend: "edit",   editor: sectionInsEditor},
 			{ extend: "remove", editor: sectionInsEditor}
-		]
+		],
+		rowCallback: function ( row, data ) {
+        // Set the checked state of the checkbox in the table
+      $('input.editor-active', row).prop( 'checked', data.odd == 1 );
+    }
 	} );
+
+	$('#section_po').on( 'change', 'input.editor-active', function () {
+        sectionInsEditor
+            .edit( $(this).closest('tr'), false )
+            .set( 'odd', $(this).prop( 'checked' ) ? 1 : 0 )
+            .submit();
+    } );
+
 	sectionEditor.on( 'submitComplete', function() {
 		sectionTable.ajax.reload(null,false);
 	});

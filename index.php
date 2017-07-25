@@ -43,7 +43,7 @@ if(isset($_POST["submit"])) {
 	<body class="bootstrap">
 		<section>
 			<header>
-				<nav>
+				<nav class="navbar-fixed-top navbar-default">
 					<ul class="nav nav-tabs">
             <li role="presentation" class="active"><a href="#">Requested PO's</a></li>
             <li role="presentation"><a href="/complete.html">Completed PO's</a></li>
@@ -51,50 +51,58 @@ if(isset($_POST["submit"])) {
 				</nav>
 			</header>
 		</section>
-		<div class="container-fluid">
+		<section style="padding-top:64px;">
+			<div class="container-fluid">
 
-			<h3 class="text-center">
-				Requested PO's</span>
-			</h3>
+				<h3 class="text-center">
+					Requested PO's</span>
+				</h3>
 
-			<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="requested_po" width="100%">
-				<thead>
-					<tr>
-						<th>Requested PO Id</th>
-						<th>Event</th>
-						<th>Event Date</th>
-						<th>Vendor</th>
-						<th>Ticket Group Code </th>
-						<th>Cost of Inventory</th>
-						<th>On-Hand Date</th>
-						<th>Stock Type</th>
-						<th>Near Term Delivery Method </th>
-						<th>Internal PO Notes</th>
-						<th>External PO Notes</th>
-						<th>External PO #</th>
-						<th>Shipping Notes</th>
-						<th>Payment Method</th>
-					</tr>
-				</thead>
-			</table>
-			<hr/>
-			<div id="button">
-
-				<form method="post" enctype="multipart/form-data" class="row">
-					Upload CSV: <input type="file" name="file" class="col-md-3">
-					<input type="submit" name="submit" value="Upload" class="btn btn-sm btn-primary col-md-1" title="Upload .csv file in the format below">
-				</form>
-				<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="section_po" width="100%">
+				<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="requested_po" width="100%">
 					<thead>
 						<tr>
-							<th>Section Id</th>
-							<th>Section</th>
-							<th>Row</th>
-							<th>Seat</th>
+							<th>Requested PO Id</th>
+							<th>Date Requested</th>
+							<th>Responsible User</th>
+							<th>Event</th>
+							<th>Event Date</th>
+							<th>Consignment PO</th>
+							<th>Vendor</th>
+							<th># of tickets</th>
+							<th>Ticket Group Code </th>
+							<th>Cost of Inventory</th>
+							<th>On-Hand Date</th>
+							<th>Stock Type</th>
+							<th>Near Term Delivery Method </th>
+							<th>Internal PO Notes</th>
+							<th>External PO Notes</th>
+							<th>External PO #</th>
+							<th>Shipping Notes</th>
+							<th>Payment Method</th>
 						</tr>
 					</thead>
 				</table>
+				<hr/>
+				<div id="button">
+
+					<form method="post" enctype="multipart/form-data" class="row">
+						Upload CSV: <input type="file" name="file" class="col-md-3">
+						<input type="submit" name="submit" value="Upload" class="btn btn-sm btn-primary col-md-1" title="Upload .csv file in the format below">
+					</form>
+					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="section_po" width="100%">
+						<thead>
+							<tr>
+								<th>Section Id</th>
+								<th>Section</th>
+								<th>Row</th>
+								<th>Odd</th>
+								<th>Lower Seat #</th>
+								<th>Seat Qty</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
 			</div>
-		</div>
+		</section>
 	</body>
 </html>

@@ -10,6 +10,8 @@ body.jqueryui {
 	background-color: #fff;
 }
 
+body { padding-bottom: 70px; }
+
 body.dataTables div.container,
 body.jqueryui div.container {
 	max-width: 980px;

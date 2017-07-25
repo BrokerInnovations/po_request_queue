@@ -5,9 +5,13 @@
 
 CREATE TABLE IF NOT EXISTS `requested_po` (
 	`id` int(10) NOT NULL auto_increment,
+	`date_requested` date,
+	`responsible_user` varchar(255),
 	`event` varchar(255),
 	`event_date` date,
+	`consignment` varchar(255),
 	`vendor` varchar(255),
+	`tickets_number` varchar(255),
 	`ticket_group_code_` varchar(255),
 	`cost_of_inventory_` varchar(255),
 	`on-hand_date_` varchar(255),

@@ -26,7 +26,9 @@ $db->sql( "CREATE TABLE IF NOT EXISTS `section_po` (
 	`section_id` varchar(255),
 	`section` varchar(255),
 	`row` varchar(255),
-	`seat` varchar(255),
+	`odd` INT(1) UNSIGNED ZEROFILL,
+	`seat_low` varchar(255),
+	`seat_qty` varchar(255),
 	PRIMARY KEY( `id` )
 );" );
 
@@ -36,7 +38,9 @@ $db->sql( "CREATE TABLE IF NOT EXISTS `section_po` (
 			Field::inst( 'section_id' ),
 			Field::inst( 'section' ),
 			Field::inst( 'row' ),
-			Field::inst( 'seat' )
+			Field::inst( 'odd' ),
+			Field::inst( 'seat_low' ),
+			Field::inst( 'seat_qty' )
 		)
 		->process( $_POST )
 		->json();
