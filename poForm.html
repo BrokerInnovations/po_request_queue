@@ -1,0 +1,188 @@
+<!doctype html>
+<html ng-app="po">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+		<title>PO Request Queue</title>
+
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/dt-1.10.15/b-1.3.1/b-colvis-1.3.1/cr-1.3.3/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css">
+		<link rel="stylesheet" type="text/css" href="css/generator-base.css">
+		<link rel="stylesheet" type="text/css" href="css/editor.bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/foxholder-styles.css">
+
+    <script src="js/jquery.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-animate.js"></script>
+    <script src="js/app.js"></script>
+	</head>
+	<body class="bootstrap" ng-controller="HomeController as homeVm">
+		<section>
+			<header>
+				<nav>
+					<ul class="nav nav-tabs">
+            <li role="presentation"><a href="/">Requested PO's</a></li>
+						<li role="presentation" class="active"><a href="/poForm.html">PO Form</a></li>
+            <li role="presentation"><a href="/complete.html">Completed PO's</a></li>
+          </ul>
+				</nav>
+			</header>
+		</section>
+		<div class="container-fluid home">
+  <header>
+    <h3 class="text-center">PO Form</h3>
+    <hr/>
+  </header>
+
+  <section>
+    <div>
+      <form id="po_form">
+        <fieldset class="row">
+          <div class="col-md-6">
+            <div class="form-group form-container-1">
+              <label for="event">Event</label>
+              <div>
+                <input type="text" id="event" class="form-control" ng-model="homeVm.poInfo.event">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="date_req">Date Requested</label>
+              <div>
+                <input type="date" id="date_req" class="form-control" ng-model="homeVm.poInfo.date_req">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="responsible_user">Responsible User</label>
+              <div>
+                <input type="text" id="responsible_user" class="form-control" ng-model="homeVm.poInfo.responsible_user">
+              </div>
+            </div>
+            <!-- <div class="form-group">
+              <label for="tickets_quantity"># of tickets</label>
+              <div>
+                <input type="text" id="tickets_quantity" class="form-control">
+              </div>
+            </div> -->
+            <div class="form-group">
+              <label for="vendor">Vendor</label>
+              <div>
+                <input type="text" id="vendor" class="form-control" ng-model="homeVm.poInfo.vendor">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="ticket_code">Ticket Group Code</label>
+              <div>
+                <input type="text" id="ticket_code" class="form-control" ng-model="homeVm.poInfo.ticket_code">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cost_inventory">Cost of Inventory</label>
+              <div>
+                <input type="text" id="cost_inventory" class="form-control" ng-model="homeVm.poInfo.cost_inventory">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="onhand_date">On-Hand Date</label>
+              <div>
+                <input type="date" id="onhand_date" class="form-control" ng-model="homeVm.poInfo.onhand_date">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="consignment">Consignment</label>
+              <div>
+                <input type="checkbox" id="consignment" class="form-control" ng-model="homeVm.poInfo.consignment"
+                  ng-init="homeVm.poInfo.consignment='0'">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="event_date">Event Date</label>
+              <div>
+                <input type="date" id="event_date" class="form-control" ng-model="homeVm.poInfo.event_date">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="stock_type">Stock Type</label>
+              <div>
+                <input type="text" id="stock_type" class="form-control" ng-model="homeVm.poInfo.stock_type">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="delivery_method">Near Term Delivery Method </label>
+              <div>
+                <input type="text" id="delivery_method" class="form-control" ng-model="homeVm.poInfo.delivery_method">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="internal_notes">Internal PO Notes</label>
+              <div>
+                <input type="text" id="internal_notes" class="form-control" ng-model="homeVm.poInfo.internal_notes">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="external_notes">External PO Notes</label>
+              <div>
+                <input type="text" id="external_notes" class="form-control" ng-model="homeVm.poInfo.external_notes">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="external_po_number">External PO #</label>
+              <div>
+                <input type="text" id="external_po_number" class="form-control" ng-model="homeVm.poInfo.external_po_number">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="shipping_notes">Shipping Notes</label>
+              <div>
+                <input type="text" id="shipping_notes" class="form-control" ng-model="homeVm.poInfo.shipping_notes">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="payment_method">Payment Method</label>
+              <div>
+                <input type="text" id="payment_method" class="form-control" ng-model="homeVm.poInfo.payment_method">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </section>
+
+  <section class="buttons-row">
+    <span class="btn btn-md btn-primary" ng-click="homeVm.addSeats()" ng-if="homeVm.seatInfo">Add Row</span>
+    <span class="btn btn-md btn-primary" ng-click="homeVm.seatInfo = !homeVm.seatInfo" ng-if="!homeVm.seatInfo">Add Seat Info</span>
+  </section>
+
+  <section>
+    <table class="table animate-if" ng-if="homeVm.seatInfo">
+      <thead>
+        <tr>
+          <th class="text-center">Section</th>
+          <th class="text-center">Row</th>
+          <th class="text-center">Odd/Even</th>
+          <th class="text-center">Low Seat #</th>
+          <th class="text-center">Seat Qty</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat="seat in homeVm.seats track by $index">
+        <tr>
+          <td><input type="text" class="form-control" ng-model="seat.section"></td>
+          <td><input type="text" class="form-control" ng-model="seat.row"></td>
+          <td class="text-center"><input type="checkbox" ng-model="seat.odd" ng-init="seat.odd='0'"></td>
+          <td><input type="text" class="form-control" ng-model="seat.low_seat"></td>
+          <td><input type="text" class="form-control" ng-model="seat.seatqty"></td>
+        </tr>
+      </tbody>
+
+    </table>
+  </section>
+
+  <section class="row text-center">
+    <span class="btn btn-md btn-primary" ng-click="homeVm.submit()" ng-if="homeVm.seats.length>=1">Submit</span>
+  </section>
+</div>
+
+	</body>
+</html>

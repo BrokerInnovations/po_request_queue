@@ -29,17 +29,17 @@ use
 // 	`event_date` date,
 // 	`consignment` varchar(255),
 // 	`vendor` varchar(255),
-// 	`tickets_number` varchar(255),
-// 	`ticket_group_code_` varchar(255),
-// 	`cost_of_inventory_` varchar(255),
-// 	`on-hand_date_` varchar(255),
+// 	`quantity` varchar(255),
+// 	`ticket_group_code` varchar(255),
+// 	`cost_of_inventory` varchar(255),
+// 	`on_hand_date` date,
 // 	`stock_type` varchar(255),
-// 	`near_term_delivery_method_` varchar(255),
+// 	`near_term_delivery_method` varchar(255),
 // 	`internal_po_notes` varchar(255),
-// 	`external_po_notes_` varchar(255),
-// 	`external_po__` varchar(255),
+// 	`external_po_notes` varchar(255),
+// 	`external_po_num` varchar(255),
 // 	`shipping_notes` varchar(255),
-// 	`payment_method_` varchar(255),
+// 	`payment_method` varchar(255),
 // 	PRIMARY KEY( `id` )
 // );" );
 
@@ -62,17 +62,20 @@ Editor::inst( $db, 'requested_po_vw', 'id' )
                 return ! $val ? 0 : 1;
             } ),
 		Field::inst( 'vendor' ),
-		Field::inst( 'quantity' ),
-		Field::inst( 'ticket_group_code_' ),
-		Field::inst( 'cost_of_inventory_' ),
-		Field::inst( 'on-hand_date_' ),
+		Field::inst( 'ticket_quantity' ),
+		Field::inst( 'ticket_group_code' ),
+		Field::inst( 'cost_of_inventory' ),
+		Field::inst( 'on_hand_date' )
+		->validator( 'Validate::dateFormat', array( 'format'=>'Y-m-d' ) )
+		->getFormatter( 'Format::date_sql_to_format', 'Y-m-d' )
+		->setFormatter( 'Format::date_format_to_sql', 'Y-m-d' ),
 		Field::inst( 'stock_type' ),
-		Field::inst( 'near_term_delivery_method_' ),
+		Field::inst( 'near_term_delivery_method' ),
 		Field::inst( 'internal_po_notes' ),
-		Field::inst( 'external_po_notes_' ),
-		Field::inst( 'external_po__' ),
+		Field::inst( 'external_po_notes' ),
+		Field::inst( 'external_po_num' ),
 		Field::inst( 'shipping_notes' ),
-		Field::inst( 'payment_method_' )
+		Field::inst( 'payment_method' )
 	)
 	->process( $_POST )
 	->json();

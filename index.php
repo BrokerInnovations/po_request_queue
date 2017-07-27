@@ -46,6 +46,7 @@ if(isset($_POST["submit"])) {
 				<nav class="navbar-fixed-top navbar-default">
 					<ul class="nav nav-tabs">
             <li role="presentation" class="active"><a href="#">Requested PO's</a></li>
+						<li role="presentation"><a href="/poForm.html">PO Form</a></li>
             <li role="presentation"><a href="/complete.html">Completed PO's</a></li>
           </ul>
 				</nav>

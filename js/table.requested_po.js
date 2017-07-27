@@ -46,19 +46,19 @@ $(document).ready(function() {
 			},
 			{
 				"label": "# of tickets:",
-				"name": "quantity"
+				"name": "ticket_quantity"
 			},
 			{
 				"label": "Ticket Group Code :",
-				"name": "ticket_group_code_"
+				"name": "ticket_group_code"
 			},
 			{
 				"label": "Cost of Inventory :",
-				"name": "cost_of_inventory_"
+				"name": "cost_of_inventory"
 			},
 			{
 				"label": "On-Hand Date :",
-				"name": "on-hand_date_"
+				"name": "on_hand_date"
 			},
 			{
 				"label": "Stock Type:",
@@ -66,7 +66,7 @@ $(document).ready(function() {
 			},
 			{
 				"label": "Near Term Delivery Method :",
-				"name": "near_term_delivery_method_"
+				"name": "near_term_delivery_method"
 			},
 			{
 				"label": "Internal PO Notes:",
@@ -74,11 +74,11 @@ $(document).ready(function() {
 			},
 			{
 				"label": "External PO Notes :",
-				"name": "external_po_notes_"
+				"name": "external_po_notes"
 			},
 			{
 				"label": "External PO # :",
-				"name": "external_po__"
+				"name": "external_po_num"
 			},
 			{
 				"label": "Shipping Notes:",
@@ -86,7 +86,7 @@ $(document).ready(function() {
 			},
 			{
 				"label": "Payment Method :",
-				"name": "payment_method_"
+				"name": "payment_method"
 			}
 		]
 	} );
@@ -129,37 +129,37 @@ $(document).ready(function() {
 				"data": "vendor"
 			},
 			{
-				"data": "quantity"
+				"data": "ticket_quantity"
 			},
 			{
-				"data": "ticket_group_code_"
+				"data": "ticket_group_code"
 			},
 			{
-				"data": "cost_of_inventory_"
+				"data": "cost_of_inventory"
 			},
 			{
-				"data": "on-hand_date_"
+				"data": "on_hand_date"
 			},
 			{
 				"data": "stock_type"
 			},
 			{
-				"data": "near_term_delivery_method_"
+				"data": "near_term_delivery_method"
 			},
 			{
 				"data": "internal_po_notes"
 			},
 			{
-				"data": "external_po_notes_"
+				"data": "external_po_notes"
 			},
 			{
-				"data": "external_po__"
+				"data": "external_po_num"
 			},
 			{
 				"data": "shipping_notes"
 			},
 			{
-				"data": "payment_method_"
+				"data": "payment_method"
 			}
 		],
 		rowId: 'extn',
@@ -168,7 +168,6 @@ $(document).ready(function() {
     },
 		lengthChange: false,
 		buttons: [
-			{ extend: "create", editor: requestEditor },
 			{ extend: "edit",   editor: requestEditor },
 			{ extend: "remove", editor: requestEditor }
 		],
