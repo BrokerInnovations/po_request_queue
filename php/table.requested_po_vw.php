@@ -44,7 +44,7 @@ use
 // );" );
 
 // Build our Editor instance and process the data coming from _POST
-Editor::inst( $db, 'requested_po', 'id' )
+Editor::inst( $db, 'requested_po_vwv', 'id' )
 	->fields(
 		Field::inst( 'id' ),
 		Field::inst( 'date_requested' )
@@ -62,7 +62,7 @@ Editor::inst( $db, 'requested_po', 'id' )
                 return ! $val ? 0 : 1;
             } ),
 		Field::inst( 'vendor' ),
-		Field::inst( 'quantity' ),
+		Field::inst( 'ticket_quantity' ),
 		Field::inst( 'ticket_group_code' ),
 		Field::inst( 'cost_of_inventory' ),
 		Field::inst( 'on_hand_date' )

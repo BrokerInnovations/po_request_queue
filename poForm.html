@@ -9,7 +9,6 @@
 		<link rel="stylesheet" type="text/css" href="css/generator-base.css">
 		<link rel="stylesheet" type="text/css" href="css/editor.bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/foxholder-styles.css">
 
     <script src="js/jquery.js"></script>
     <script src="js/angular.js"></script>
@@ -152,7 +151,7 @@
 
   <section class="buttons-row">
     <span class="btn btn-md btn-primary" ng-click="homeVm.addSeats()" ng-if="homeVm.seatInfo">Add Row</span>
-    <span class="btn btn-md btn-primary" ng-click="homeVm.seatInfo = !homeVm.seatInfo" ng-if="!homeVm.seatInfo">Add Seat Info</span>
+    <span class="btn btn-md btn-primary" ng-click="homeVm.seatInfo = !homeVm.seatInfo;homeVm.addSeats()" ng-if="!homeVm.seatInfo">Add Seat Info</span>
   </section>
 
   <section>

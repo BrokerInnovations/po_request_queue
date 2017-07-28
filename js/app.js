@@ -4,27 +4,10 @@
 
     angular.module('po', ['ngAnimate']);
 
-    // angular.module('po').config(configuration);
-    //
-    // function configuration($stateProvider, $httpProvider, $locationProvider) {
-    //     //$urlRouterProvider.otherwise("/");
-    //     $locationProvider.html5Mode(true);
-    //     $stateProvider
-    //       .state('home', {
-    //           url: '/',
-    //           controller: 'HomeController',
-    //           controllerAs: 'homeVm',
-    //           templateUrl: '/templates/home.html'
-    //       });
-    // }
-
     angular
         .module('po')
         .controller('HomeController', HomeController);
 
-    //HomeController.$inject = ['$window', '$state'];
-
-    /* @ngInject */
     function HomeController($http, $scope) {
         var vm = this;
         vm.seatInfo = false;

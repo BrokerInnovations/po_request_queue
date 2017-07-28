@@ -8,7 +8,7 @@
 var sectionRule = '';
 $(document).ready(function() {
 	var requestEditor = new $.fn.dataTable.Editor( {
-		ajax: 'php/table.requested_po.php',
+		ajax: 'php/table.requested_po_vw.php',
 		table: '#requested_po',
 		fields: [
 			{
@@ -46,7 +46,7 @@ $(document).ready(function() {
 			},
 			{
 				"label": "# of tickets:",
-				"name": "ticket_quantity"
+				"name": "quantity"
 			},
 			{
 				"label": "Ticket Group Code :",
@@ -97,7 +97,7 @@ $(document).ready(function() {
 		scrollX: true,
 		scrollY: "300px",
 		paging: false,
-		ajax: 'php/table.requested_po.php',
+		ajax: 'php/table.requested_po_vw.php',
 		columns: [
 
 			{
