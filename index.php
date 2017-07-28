@@ -55,8 +55,8 @@ if(isset($_POST["submit"])) {
 		<section style="padding-top:64px;">
 			<div class="container-fluid">
 
-				<h3 class="text-center">
-					Requested PO's</span>
+				<h3 class="text-center title">
+					Requested PO's
 				</h3>
 
 				<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="requested_po" width="100%">
