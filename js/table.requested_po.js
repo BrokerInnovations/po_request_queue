@@ -6,6 +6,7 @@
 
 (function($){
 var sectionRule = '';
+var completedSection = [];
 $(document).ready(function() {
 	var requestEditor = new $.fn.dataTable.Editor( {
 		ajax: 'php/table.requested_po_vw.php',
@@ -172,9 +173,9 @@ $(document).ready(function() {
 			{ extend: "remove", editor: requestEditor }
 		],
 		rowCallback: function ( row, data ) {
-            // Set the checked state of the checkbox in the table
-            $('input.editor-active', row).prop( 'checked', data.consignment == 1 );
-        }
+        // Set the checked state of the checkbox in the table
+        $('input.editor-active', row).prop( 'checked', data.consignment == 1 );
+    }
 	} );
 
 	$('#requested_po').on( 'change', 'input.editor-active', function () {
@@ -273,11 +274,28 @@ $(document).ready(function() {
 
 	requestTable.on( 'select', function () {
 		sectionTable.buttons().enable();
+		$('#completed').prop('disabled', false);
 		sectionTable.ajax.reload();
 	});
 
+  $( "#completed" ).click(function() {
+		var test = requestTable.row( { selected: true } );
+
+		var data = test.data();
+		console.log(data);
+
+		$.post('php/completed.php',data,function(data) {
+			console.log(data);
+			//console.log(completedSection);
+			//completedSection.length = 0;
+			console.log(completedSection);
+		});
+
+  });
+
 	requestTable.on( 'deselect', function () {
 		sectionTable.ajax.reload();
+		$('#completed').prop('disabled', true);
 		sectionTable.buttons().disable();
 	});
 
@@ -331,6 +349,7 @@ $(document).ready(function() {
 			{ extend: "remove", editor: sectionInsEditor}
 		],
 		rowCallback: function ( row, data ) {
+			completedSection.push(data);
         // Set the checked state of the checkbox in the table
       $('input.editor-active', row).prop( 'checked', data.odd == 1 );
     }

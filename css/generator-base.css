@@ -18,6 +18,11 @@ body.jqueryui div.container {
 	margin: 0 auto;
 }
 
+#completed {
+	position: absolute;
+	left: 130px;
+}
+
 .title {
 	color: #4e7aa0;
 }

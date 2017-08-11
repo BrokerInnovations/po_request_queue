@@ -33,12 +33,14 @@ if(isset($_POST["submit"])) {
 		<link rel="stylesheet" type="text/css" href="css/editor.bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap-grid.min.css">
 
+		<script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/dt-1.10.15/b-1.3.1/b-colvis-1.3.1/cr-1.3.3/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/dataTables.editor.min.js"></script>
 		<script type="text/javascript"
  src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/editor.bootstrap.min.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/table.requested_po.js"></script>
+		<script type="text/javascript" charset="utf-8" src="php/completed.php"></script>
 	</head>
 	<body class="bootstrap">
 		<section>
@@ -54,11 +56,13 @@ if(isset($_POST["submit"])) {
 		</section>
 		<section style="padding-top:64px;">
 			<div class="container-fluid">
+				<!-- <div class=""> -->
 
+				<!-- </div> -->
 				<h3 class="text-center title">
 					Requested PO's
 				</h3>
-
+				<button disabled class="text-right btn btn-md btn-default" type="button" name="button" id="completed">Completed</button>
 				<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="requested_po" width="100%">
 					<thead>
 						<tr>
